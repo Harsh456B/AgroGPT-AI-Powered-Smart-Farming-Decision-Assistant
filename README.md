@@ -2,44 +2,36 @@
 
 ## 🌱 Overview
 
-AgroGPT is an intelligent farming assistant that leverages machine learning to provide farmers with data-driven recommendations for crop selection, fertilizer usage, pest management, and yield prediction. The system combines multiple AI models to offer comprehensive agricultural insights.
+AgroGPT is an intelligent farming assistant that leverages machine learning to provide farmers with data-driven insights for better agricultural decisions. The platform offers crop recommendations, fertilizer suggestions, pest management advice, yield predictions, and market price forecasting.
 
 ## 🚀 Features
 
-### Core AI Capabilities
-- **Crop Recommendation**: Suggests optimal crops based on soil conditions and climate
-- **Fertilizer Prediction**: Recommends appropriate fertilizers and application rates
-- **Pest Detection**: Identifies potential pest threats and provides management strategies
-- **Yield Prediction**: Forecasts crop yields based on historical data and current conditions
-- **Price Forecasting**: Predicts crop prices to help with market timing
-- **Soil Health Analysis**: Assesses soil quality and provides improvement recommendations
-- **Weather Impact Analysis**: Analyzes weather patterns and their effect on farming decisions
-
-### Technical Features
-- **Multi-Model AI System**: Combines multiple machine learning models for comprehensive analysis
-- **Real-time Processing**: Instant recommendations and predictions
-- **User-friendly Interface**: Clean, responsive web interface
-- **Data Visualization**: Interactive charts and graphs for better understanding
-- **Mobile Responsive**: Works seamlessly on all devices
+- **Crop Recommendation**: AI-powered suggestions for optimal crop selection based on soil and climate data
+- **Fertilizer Management**: Personalized fertilizer recommendations for different crops and soil conditions
+- **Pest Detection**: Early warning system for pest identification and management strategies
+- **Yield Prediction**: Advanced ML models to predict crop yields based on historical data
+- **Price Forecasting**: Market price predictions to help with selling decisions
+- **Weather Integration**: Real-time weather data integration for farming decisions
+- **Soil Health Analysis**: Comprehensive soil health assessment and recommendations
 
 ## 🛠️ Technology Stack
 
 - **Backend**: Django 4.2.7
-- **Frontend**: HTML, CSS, JavaScript
-- **Machine Learning**: scikit-learn, XGBoost, pandas, numpy
-- **Visualization**: matplotlib, seaborn
+- **Machine Learning**: Scikit-learn, XGBoost, Pandas, NumPy
+- **Visualization**: Matplotlib, Seaborn
 - **Deployment**: Render, Gunicorn, WhiteNoise
 - **Database**: SQLite (development), PostgreSQL (production ready)
 
-## 📊 AI Models Included
+## 📊 ML Models
 
-1. **Crop Recommendation Model** - Classification model for crop selection
-2. **Fertilizer Prediction Model** - Regression model for fertilizer recommendations
-3. **Pest Detection Model** - Classification model for pest identification
-4. **Yield Prediction Model** - Regression model for yield forecasting
-5. **Price Prediction Model** - Time series model for price forecasting
-6. **Soil Health Model** - Classification model for soil quality assessment
-7. **Weather Impact Model** - Regression model for weather-based predictions
+The project includes trained models for:
+- Crop recommendation (Random Forest)
+- Fertilizer recommendation (Random Forest)
+- Pest detection (Random Forest)
+- Yield prediction (XGBoost)
+- Price forecasting (Linear Regression)
+- Weather prediction (Linear Regression)
+- Soil health assessment (Random Forest)
 
 ## 🚀 Quick Start
 
@@ -61,34 +53,21 @@ AgroGPT is an intelligent farming assistant that leverages machine learning to p
    python manage.py migrate
    ```
 
-4. **Collect static files**
-   ```bash
-   python manage.py collectstatic
-   ```
-
-5. **Start the development server**
+4. **Start the development server**
    ```bash
    python manage.py runserver
    ```
 
-6. **Access the application**
+5. **Access the application**
    Open your browser and go to `http://127.0.0.1:8000/`
 
 ### Production Deployment
 
 The application is configured for deployment on Render:
 
-1. **Fork/Clone this repository**
-2. **Connect to Render**:
-   - Go to [Render Dashboard](https://dashboard.render.com)
-   - Click "New +" → "Web Service"
-   - Connect your GitHub repository
-   - Render will automatically detect the configuration
-
-3. **Environment Variables** (automatically set by Render):
-   - `SECRET_KEY`: Auto-generated
-   - `DEBUG`: Set to `False`
-   - `ALLOWED_HOSTS`: Configured for `.onrender.com`
+1. **Fork/Clone the repository**
+2. **Connect to Render**
+3. **Deploy automatically** - Render will detect the `render.yaml` configuration
 
 ## 📁 Project Structure
 
@@ -97,40 +76,75 @@ AgroGPTWeb/
 ├── agrogpt_web/          # Django project settings
 ├── website/              # Main Django app
 │   ├── templates/        # HTML templates
-│   ├── static/          # CSS, JS, images
-│   └── views.py         # View logic
-├── models/              # Trained ML models
-├── datasets/            # Training datasets
-├── training/            # Model training scripts
-├── visualizations/      # Model performance plots
-├── cli_assistant/       # Command-line tools
-└── requirements.txt     # Python dependencies
+│   ├── models.py         # Database models
+│   ├── views.py          # View logic
+│   └── urls.py           # URL routing
+├── datasets/             # Training datasets
+├── models/               # Trained ML models
+├── training/             # Model training scripts
+├── visualizations/       # Model performance plots
+├── cli_assistant/        # Command-line tools
+└── requirements.txt      # Python dependencies
 ```
 
-## 🤖 AI Models Training
+## 🤖 ML Model Training
 
-The project includes training scripts for all AI models:
+To retrain the models with new data:
 
-- `training/train_crop_model.py` - Crop recommendation model
-- `training/train_fertilizer_model.py` - Fertilizer prediction model
-- `training/train_pest_model.py` - Pest detection model
-- `training/train_yield_model.py` - Yield prediction model
-- `training/train_price_model.py` - Price forecasting model
-- `training/train_soil_health_model.py` - Soil health model
-- `training/train_weather_model.py` - Weather impact model
+```bash
+# Train crop recommendation model
+python training/train_crop_model.py
+
+# Train fertilizer model
+python training/train_fertilizer_model.py
+
+# Train pest detection model
+python training/train_pest_model.py
+
+# Train yield prediction model
+python training/train_yield_model.py
+
+# Train price forecasting model
+python training/train_price_model.py
+
+# Train weather prediction model
+python training/train_weather_model.py
+
+# Train soil health model
+python training/train_soil_health_model.py
+```
 
 ## 📈 Model Performance
 
-All models have been trained and validated with performance metrics available in the `visualizations/` directory:
+The models have been trained and validated with the following performance metrics:
+- **Crop Recommendation**: High accuracy with comprehensive classification reports
+- **Fertilizer Recommendation**: Optimized for different soil conditions
+- **Pest Detection**: Early warning system with high precision
+- **Yield Prediction**: R² scores showing strong predictive power
+- **Price Forecasting**: Market trend analysis with confidence intervals
 
-- Accuracy plots
-- Confusion matrices
-- ROC curves
-- R² plots for regression models
+## 🔧 Configuration
 
-## 🌐 Live Demo
+### Environment Variables
 
-Visit the deployed application: [AgroGPT on Render](https://agrogpt-web.onrender.com)
+- `SECRET_KEY`: Django secret key (auto-generated in production)
+- `DEBUG`: Set to 'False' in production
+- `DATABASE_URL`: Database connection string (for production)
+
+### Static Files
+
+Static files are automatically collected and served using WhiteNoise middleware.
+
+## 📊 Data Sources
+
+The application uses various agricultural datasets including:
+- Crop recommendation data
+- Fertilizer requirement data
+- Pest identification data
+- Historical yield data
+- Market price data
+- Weather patterns
+- Soil health indicators
 
 ## 🤝 Contributing
 
@@ -142,14 +156,13 @@ Visit the deployed application: [AgroGPT on Render](https://agrogpt-web.onrender
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgments
 
-- Dataset sources: Various agricultural datasets
-- ML libraries: scikit-learn, XGBoost
-- Web framework: Django
-- Deployment platform: Render
+- Agricultural research institutions for datasets
+- Open-source ML community for tools and libraries
+- Farmers and agricultural experts for domain knowledge
 
 ## 📞 Support
 
@@ -157,4 +170,4 @@ For support and questions, please open an issue on GitHub or contact the develop
 
 ---
 
-**Built with ❤️ for the farming community** 
+**Made with ❤️ for the farming community** 

@@ -6,10 +6,8 @@ services:
     startCommand: "gunicorn agrogpt_web.wsgi:application"
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.7
+        value: 3.9.16
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
-        value: False
-      - key: ALLOWED_HOSTS
-        value: ".onrender.com" 
+        value: false 

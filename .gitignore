@@ -147,8 +147,4 @@ media/
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db
-
-# Model files (if too large)
-# models/*.pkl
-# visualizations/*.png 
+Thumbs.db 
