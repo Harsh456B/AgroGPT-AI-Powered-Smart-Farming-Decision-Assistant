@@ -72,7 +72,14 @@ le_crop = LabelEncoder()
 le_crop.fit(crops)
 
 def load_crop_model():
-    model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'models', 'crop_model.pkl')
+    # Use absolute path for deployment
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    model_path = os.path.join(base_dir, 'models', 'crop_model.pkl')
+    
+    # Check if model file exists
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"Model file not found: {model_path}")
+    
     return joblib.load(model_path)
 
 @csrf_exempt
@@ -92,8 +99,9 @@ def predict_crop(request):
             # Load models with error handling
             try:
                 crop_model = load_crop_model()
-                fert_model = joblib.load(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'models', 'fertilizer_model.pkl'))
-                soil_model = joblib.load(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'models', 'soil_health_model.pkl'))
+                base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                fert_model = joblib.load(os.path.join(base_dir, 'models', 'fertilizer_model.pkl'))
+                soil_model = joblib.load(os.path.join(base_dir, 'models', 'soil_health_model.pkl'))
             except Exception as e:
                 return render(request, 'website/result.html', {'error': f'Model loading error: {str(e)}'})
             

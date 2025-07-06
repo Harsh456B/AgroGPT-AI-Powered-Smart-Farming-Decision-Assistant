@@ -69,13 +69,19 @@ le_pest = LabelEncoder().fit(pests)
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 model_dir = os.path.join(project_root, 'models')
 
-crop_model = joblib.load(os.path.join(model_dir, 'crop_model.pkl'))
-fert_model = joblib.load(os.path.join(model_dir, 'fertilizer_model.pkl'))
-soil_model = joblib.load(os.path.join(model_dir, 'soil_health_model.pkl'))
-weather_model = joblib.load(os.path.join(model_dir, 'weather_model.pkl'))
-pest_model = joblib.load(os.path.join(model_dir, 'pest_model.pkl'))
-yield_model = joblib.load(os.path.join(model_dir, 'yield_model.pkl'))
-price_model = joblib.load(os.path.join(model_dir, 'price_model.pkl'))
+# Load models with error handling
+try:
+    crop_model = joblib.load(os.path.join(model_dir, 'crop_model.pkl'))
+    fert_model = joblib.load(os.path.join(model_dir, 'fertilizer_model.pkl'))
+    soil_model = joblib.load(os.path.join(model_dir, 'soil_health_model.pkl'))
+    weather_model = joblib.load(os.path.join(model_dir, 'weather_model.pkl'))
+    pest_model = joblib.load(os.path.join(model_dir, 'pest_model.pkl'))
+    yield_model = joblib.load(os.path.join(model_dir, 'yield_model.pkl'))
+    price_model = joblib.load(os.path.join(model_dir, 'price_model.pkl'))
+except Exception as e:
+    print(f"Error loading models: {e}")
+    # Initialize with None if models can't be loaded
+    crop_model = fert_model = soil_model = weather_model = pest_model = yield_model = price_model = None
 
 # Feature generation for demo (can be replaced with real user input)
 def generate_features(crop, district, season):
