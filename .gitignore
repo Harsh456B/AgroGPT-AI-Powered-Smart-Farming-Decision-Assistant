@@ -127,7 +127,7 @@ dmypy.json
 __pycache__/
 db.sqlite3
 
-# Datasets and large files
+# Datasets and large files (excluded from deployment)
 datasets/
 models/
 visualizations/
@@ -141,15 +141,26 @@ india_locations.csv
 .DS_Store
 Thumbs.db
 
-# ML Models (too large for GitHub)
-models/*pk
-models/*joblib
+# ML Models (too large for deployment)
+models/*.pkl
+models/*.joblib
 venv/
 
 # Logs
-*log
+*.log
 logs/
 
 # Temporary files
-*tmp
-*temps
+*.tmp
+*.temp
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
