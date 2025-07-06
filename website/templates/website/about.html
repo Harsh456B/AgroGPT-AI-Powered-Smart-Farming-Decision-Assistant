@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - AgroGPT AI-Powered Smart Farming</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Smoke Color Utility Classes */
+        .smoke-bg {
+            background: rgba(245, 245, 245, 0.95);
+            color: #222;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .smoke-card {
+            background: rgba(245, 245, 245, 0.9);
+            color: #333;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .smoke-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .smoke-section {
+            background: rgba(245, 245, 245, 0.85);
+            color: #333;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .smoke-text {
+            color: #555;
+            font-weight: 500;
+        }
+
+        .smoke-border {
+            border: 2px solid rgba(245, 245, 245, 0.8);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            height: 60px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #00d4ff;
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+        }
+
+        .nav-logo i {
+            font-size: 1.5em;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #b8b8b8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.4s;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            color: #00d4ff;
+            background: rgba(0, 212, 255, 0.05);
+            border-color: rgba(0, 212, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .nav-link.active {
+            color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .nav-link i {
+            font-size: 0.9em;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: #b8b8b8;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .nav-btn:hover {
+            color: #00d4ff;
+            border-color: rgba(0, 212, 255, 0.4);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 40px 0;
+            min-height: calc(100vh - 60px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+
+        .hero-title {
+            font-size: 3.5em;
+            font-weight: 800;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8em;
+            color: #00ff88;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .hero-mission {
+            font-size: 1.2em;
+            color: #f5f5f5;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+            color: #0a0a0a;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.4);
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            color: #00d4ff;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .section-content {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+        }
+
+        .section-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #f5f5f5;
+            margin-bottom: 20px;
+        }
+
+        .developer-info {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 255, 136, 0.1) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .developer-name {
+            font-size: 1.5em;
+            color: #00ff88;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .developer-details {
+            color: #f5f5f5;
+            font-size: 1.1em;
+        }
+
+        /* Join Us Section */
+        .join-section {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(0, 255, 136, 0.05) 100%);
+            border-radius: 20px;
+            margin-top: 60px;
+        }
+
+        .join-title {
+            font-size: 2.8em;
+            color: #00ff88;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+        }
+
+        .join-description {
+            font-size: 1.2em;
+            color: #f5f5f5;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .join-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            color: #0a0a0a;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .join-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section {
+            flex: 1 1 300px;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            color: #00d4ff;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px #00d4ff44;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00d4ff44;
+        }
+
+        .footer-logo i {
+            font-size: 1.5em;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .footer-section p {
+            color: #b8b8b8;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #b8b8b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-links a:hover {
+            color: #00d4ff;
+            padding-left: 20px;
+        }
+
+        .footer-links a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 25px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #00d4ff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5em;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .nav-container {
+                padding: 0 15px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
+                padding: 40px 20px 30px;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-bottom-links {
+                justify-content: center;
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 8px #00d4ff44;
+            }
+            100% {
+                text-shadow: 0 0 12px #16213e80;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-robot"></i>
+                <span>AgroGPT</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a href="/features/" class="nav-link"><i class="fas fa-star"></i> Features</a></li>
+                <li class="nav-item"><a href="/gallery/" class="nav-link"><i class="fas fa-images"></i> Gallery</a></li>
+                <li class="nav-item"><a href="/facts/" class="nav-link"><i class="fas fa-lightbulb"></i> Facts</a></li>
+                <li class="nav-item"><a href="/about/" class="nav-link active"><i class="fas fa-info-circle"></i> About</a></li>
+                <li class="nav-item"><a href="/contact/" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-btn" onclick="openModal('adminLoginModal')" id="adminLoginBtn">
+                    <i class="fas fa-user-shield"></i>
+                    <span class="btn-text">Admin</span>
+                </button>
+                <button class="nav-btn" onclick="openModal('userProfileModal')" id="userProfileBtn" style="display: none;">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="btn-text">Profile</span>
+                </button>
+                <button class="nav-btn" onclick="openModal('settingsModal')" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                    <span class="btn-text">Settings</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <h1 class="hero-title">AgroGPT</h1>
+                <h2 class="hero-subtitle">Empowering Smart Farming with AI</h2>
+                <p class="hero-mission">
+                    Our mission is to revolutionize agriculture by making advanced AI accessible, actionable, and beneficial for every farmer, researcher, and agri-enthusiast.
+                </p>
+                <a href="/" class="cta-button">
+                    <i class="fas fa-rocket"></i> Start Your AI Analysis
+                </a>
+            </div>
+
+            <!-- What is AgroGPT Section -->
+            <div class="content-section">
+                <h2 class="section-title">What is AgroGPT?</h2>
+                <div class="section-content">
+                    <p class="section-text">
+                        AgroGPT is an innovative AI-powered platform designed to transform traditional farming practices into smart, data-driven agriculture. Our advanced machine learning algorithms analyze soil conditions, weather patterns, crop requirements, and market trends to provide personalized recommendations for optimal farming outcomes.
+                    </p>
+                    <p class="section-text">
+                        Whether you're a small-scale farmer or managing large agricultural operations, AgroGPT provides the tools and insights you need to make informed decisions, maximize yields, and ensure sustainable farming practices for future generations.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Developer Info Section -->
+            <div class="content-section">
+                <h2 class="section-title">Meet the Developer Who Built AgroGPT</h2>
+                <div class="developer-info">
+                    <div class="developer-name" style="font-size: 1.25em; color: #00ff88; font-weight: 700; margin-bottom: 10px;">
+                        🌟 Harsh Bhogal — B.Tech CSE-AI | AI Developer | Backend Engineer | AgriTech Innovator
+                    </div>
+                    <div class="developer-details" style="color: #f5f5f5; font-size: 1.08em;">
+                        I'm passionate and skilled developer currently pursuing B.Tech in Computer Science & Engineering (AI) — 6th Semester. With a strong foundation in Artificial Intelligence and backend development, he built AgroGPT to bring smart farming solutions directly to the hands of those who need them most — farmers, students, and researchers.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Join Us Section -->
+            <div class="join-section">
+                <h2 class="join-title">Join Us</h2>
+                <p class="join-description">
+                    Be part of the agricultural revolution. Join thousands of farmers and researchers who are already using AgroGPT to transform their farming practices and achieve better results.
+                </p>
+                <a href="/contact/" class="join-button">
+                    <i class="fas fa-users"></i> Get Started Today
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-seedling"></i>
+                    <span>AgroGPT</span>
+                </div>
+                <p>Revolutionizing agriculture with AI-powered smart farming solutions. Empowering farmers with data-driven insights for better crop management and sustainable farming practices.</p>
+            </div>
+            <div class="footer-right-group" style="display: flex; gap: 60px; min-width: 350px; margin-left: auto;">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/features/">Features</a></li>
+                        <li><a href="/gallery/">Gallery</a></li>
+                        <li><a href="/facts/">Facts</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/contact/">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Crop Prediction</a></li>
+                        <li><a href="#">Weather Analysis</a></li>
+                        <li><a href="#">Soil Health Check</a></li>
+                        <li><a href="#">Fertilizer Recommendations</a></li>
+                        <li><a href="#">Growing Guides</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>© 2025 <span>AgroGPT</span>. All rights reserved. | AI-Powered Smart Farming Solutions | Developed by Harsh Bhogal</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </style>
+</body>
+</html> 
