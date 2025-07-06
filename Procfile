@@ -1,0 +1,1 @@
+web: gunicorn agrogpt_web.wsgi --log-file - 

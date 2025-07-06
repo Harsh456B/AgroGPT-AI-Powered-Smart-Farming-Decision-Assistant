@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: agrogpt-web
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn agrogpt_web.wsgi:application
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: false
+      - key: PYTHON_VERSION
+        value: 3.11.7 
