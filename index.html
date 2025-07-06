@@ -319,48 +319,39 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Sample prediction logic (simplified for static demo)
+        // Backend API endpoint (update after Render deployment)
+        const BACKEND_API_URL = "https://your-render-backend-url.onrender.com/api/";
+        // Sample prediction logic (static demo, replace with real API call)
         const crops = ['Wheat', 'Rice', 'Maize', 'Cotton', 'Sugarcane', 'Tomato', 'Potato', 'Onion'];
         const fertilizers = ['Urea', 'DAP', 'MOP', 'NPK', 'Compost', 'Vermicompost'];
         const soilHealth = ['Good', 'Moderate', 'Poor'];
 
         document.getElementById('predictionForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+            // TODO: Replace with real API call to BACKEND_API_URL
             const cropName = document.getElementById('cropName').value;
             const season = document.getElementById('season').value;
             const location = document.getElementById('location').value;
-            
             if (!cropName || !season || !location) {
                 alert('Please fill in all fields');
                 return;
             }
-            
-            // Simulate AI prediction
+            // Simulate AI prediction (replace with fetch to backend)
             const recommendedCrop = crops[Math.floor(Math.random() * crops.length)];
             const fertilizer = fertilizers[Math.floor(Math.random() * fertilizers.length)];
             const soil = soilHealth[Math.floor(Math.random() * soilHealth.length)];
             const suitability = Math.floor(Math.random() * 40) + 60; // 60-100%
-            
-            // Display results
             document.getElementById('recommendedCrop').textContent = recommendedCrop;
             document.getElementById('fertilizer').textContent = fertilizer;
             document.getElementById('soilHealth').textContent = soil;
             document.getElementById('suitabilityScore').textContent = suitability + '%';
-            
-            // Show result card
             document.getElementById('resultCard').style.display = 'block';
-            
-            // Smooth scroll to results
             document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth' });
         });
-
         function resetForm() {
             document.getElementById('predictionForm').reset();
             document.getElementById('resultCard').style.display = 'none';
         }
-
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
