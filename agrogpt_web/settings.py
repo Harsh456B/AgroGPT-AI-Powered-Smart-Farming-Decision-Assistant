@@ -9,7 +9,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-please-change-this-ke
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = ['*', '.vercel.app', '.now.sh']  # For Vercel deployment
+ALLOWED_HOSTS = ['*', '.vercel.app', '.now.sh', '.onrender.com']  # For Vercel and Render deployment
 
 # Application definition
 INSTALLED_APPS = [
